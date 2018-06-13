@@ -88,9 +88,9 @@ class StatusmessageShowOnLogin(object):
     implements(IStatusMessageShowOnLogin)
 
     def __call__(self, kwargs):
-        if '/login_form' in kwargs['URL']:
+        if '/login_form' in kwargs.get('URL', ''):
             return True
-        elif '/login' in kwargs['URL']:
+        elif '/login' in kwargs.get('URL', ''):
             return True
         else:
             return False
