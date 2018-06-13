@@ -2,8 +2,8 @@ Changelog
 =========
 
 
-1.6.3 (unreleased)
-------------------
+1.6.3.rc1 (2018-06-13)
+----------------------
 
 - Implemented option to enable in automatic the status message.
   [alecghica]
