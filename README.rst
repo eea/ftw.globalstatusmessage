@@ -46,6 +46,7 @@ Under ``overrides.zcml`` register a utility as shown bellow:
 and create a factory class for the automatic enable logic:
 
 ::
+
     from ftw.globalstatusmessage.interfaces import IStatusMessageAutomaticEnable
     from zope.interface import implements
     
@@ -78,6 +79,7 @@ Under ``overrides.zcml`` register a utility as shown bellow:
 and create a factory class for the show on login form logic:
 
 ::
+
     from ftw.globalstatusmessage.interfaces import IStatusMessageShowOnLogin
     from zope.interface import implements
     
