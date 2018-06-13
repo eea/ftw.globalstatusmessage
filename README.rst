@@ -26,6 +26,68 @@ current context is relevant.
 If the nearest sub site is not excluded but a parent is excluded, the message
 is shown on the current context.
 
+Allow automatic activation
+--------------------------
+
+With the ``Allow automatic activation?`` option active it is possible
+to show and hide the global status message in automatic. By default, there is
+no logic defined for this option. You can define your own utility
+to specify the logic for the automatic activation as described bellow.
+
+Under ``overrides.zcml`` register a utility as shown bellow:
+
+::
+
+    <utility
+        name="ftw.globalstatusmessage:automatic_enable"
+        provides="ftw.globalstatusmessage.interfaces.IStatusMessageAutomaticEnable"
+        factory="mypackage.utilities.StatusmessageAutomaticEnable" />
+
+and create a factory class for the automatic enable logic:
+
+::
+    from ftw.globalstatusmessage.interfaces import IStatusMessageAutomaticEnable
+    from zope.interface import implements
+    
+    class StatusmessageAutomaticEnable(object):
+        """ Global status message utility for automatic enable
+        """
+        implements(IStatusMessageAutomaticEnable)
+
+        def __call__(self):
+            return True
+
+Show on login form
+------------------
+
+With the ``Show on login form?`` option active the global status message will
+appear only on the ``login_form`` for the anonymous users. This option can be
+useful for example when you want to inform your editors that the CMS login is
+closed for maintenance. You can define your own utility to specify the logic
+for detecting the login form as described bellow.
+
+Under ``overrides.zcml`` register a utility as shown bellow:
+
+::
+
+    <utility
+        name="ftw.globalstatusmessage:show_on_login"
+        provides="ftw.globalstatusmessage.interfaces.IStatusMessageShowOnLogin"
+        factory="mypackage.utilities.StatusmessageShowOnLogin" />
+
+and create a factory class for the show on login form logic:
+
+::
+    from ftw.globalstatusmessage.interfaces import IStatusMessageShowOnLogin
+    from zope.interface import implements
+    
+    class StatusmessageShowOnLogin(object):
+        """ Global status message utility for show on login form
+        """
+        implements(IStatusMessageShowOnLogin)
+
+        def __call__(self):
+            return True
 
 Compatibility
 =============

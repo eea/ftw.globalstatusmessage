@@ -72,6 +72,15 @@
         directory="profiles/1500"
         />
 
+    <!-- 1500 -> 1630 -->
+    <upgrade-step:importProfile
+        title="Update registry: enable new configuration enabled_automatic and show_on_login"
+        profile="ftw.globalstatusmessage:default"
+        source="1500"
+        destination="1630"
+        directory="profiles/1630"
+        />
+
     <upgrade-step:directory
         profile="ftw.globalstatusmessage:default"
         directory="."

@@ -6,7 +6,8 @@ from zope.interface import Interface
 
 
 class IStatusMessageConfigForm(model.Schema):
-    """This interface defines the configlet."""
+    """ This interface defines the configlet.
+    """
 
     enabled_bool = schema.Bool(
         title=_(u"statusmessage_label_Active", default=u"Active"),
@@ -15,6 +16,16 @@ class IStatusMessageConfigForm(model.Schema):
     enabled_anonymous_bool = schema.Bool(
         title=_(u"statusmessage_label_anonymous", default=u"Show to anonymous users?"),
         default=True,  # for backward compatibility
+        required=False)
+
+    enabled_automatic_bool = schema.Bool(
+        title=_(u"statusmessage_label_automatic", default=u"Allow automatic activation?"),
+        default=False,
+        required=False)
+
+    show_on_login_bool = schema.Bool(
+        title=_(u"statusmessage_label_show_on_login", default=u"Show on login form?"),
+        default=False,
         required=False)
 
     type_choice = schema.Choice(
@@ -47,5 +58,22 @@ class IStatusMessageConfigForm(model.Schema):
 
 
 class IGlobalStatusMessageLayer(Interface):
-    """ftw.globalstatusmessage browser layer.
+    """ ftw.globalstatusmessage browser layer.
     """
+
+
+class IStatusMessageAutomaticEnable(Interface):
+    """ ftw.globalstatusmessage automatic enable option
+    """
+
+    def __call__(kwargs):
+        """ utility logic
+        """
+
+class IStatusMessageShowOnLogin(Interface):
+    """ ftw.globalstatusmessage show on login option
+    """
+
+    def __call__(kwargs):
+        """ utility logic
+        """

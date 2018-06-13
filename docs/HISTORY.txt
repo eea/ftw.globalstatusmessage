@@ -5,7 +5,11 @@ Changelog
 1.6.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Implemented option to enable in automatic the status message.
+  [alecghica]
+
+- Implemented option to show the status message on login form.
+  [alecghica]
 
 
 1.6.2 (2017-08-22)
