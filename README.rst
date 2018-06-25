@@ -124,7 +124,7 @@ Links
 
 - Github: https://github.com/4teamwork/ftw.globalstatusmessage
 - Issues: https://github.com/4teamwork/ftw.globalstatusmessage/issues
-- Pypi: http://pypi.python.org/pypi/ftw.globalstatusmessage
+- Pypi: https://pypi.python.org/pypi/ftw.globalstatusmessage
 - Continuous integration: https://jenkins.4teamwork.ch/search?q=ftw.globalstatusmessage
 
 

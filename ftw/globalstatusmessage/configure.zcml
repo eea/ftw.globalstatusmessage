@@ -20,13 +20,6 @@
         component=".vocabularies.sites_vocabulary_factory"
         />
 
-    <!-- Registered automatic enable utility - override this with your custom logic -->
-    <utility
-        name="ftw.globalstatusmessage:automatic_enable"
-        provides="ftw.globalstatusmessage.interfaces.IStatusMessageAutomaticEnable"
-        factory=".browser.viewlets.statusmessage.StatusmessageAutomaticEnable"
-        />
-
     <!-- Registered show on login form utility - override this with your custom logic -->
     <utility
         name="ftw.globalstatusmessage:show_on_login"

@@ -7,7 +7,7 @@ from ftw.globalstatusmessage.utils import is_path_included
 from plone import api
 from plone.app.layout.viewlets import common
 from plone.registry.interfaces import IRegistry
-from zope.component import getUtility
+from zope.component import getUtility, queryUtility
 from zope.schema.interfaces import IVocabularyFactory
 from zope.interface import implements
 
@@ -42,10 +42,14 @@ class StatusmessageViewlet(common.PathBarViewlet):
         return self.index()
 
     def automatic_enable(self):
-        automatic_enable = getUtility(
+        automatic_enable = queryUtility(
                     IStatusMessageAutomaticEnable,
-                    name='ftw.globalstatusmessage:automatic_enable')
-        return automatic_enable()
+                    name='ftw.globalstatusmessage:automatic_enable',
+                    default=False)
+        if automatic_enable:
+            return automatic_enable()
+        else:
+            return False
 
     def show_on_login(self):
         if not api.user.is_anonymous():
@@ -73,14 +77,6 @@ class StatusmessageViewlet(common.PathBarViewlet):
             name='ftw.globalstatusmessage:sites_vocabulary')
         return [term.value for term in vocabulary_factory(None)]
 
-
-class StatusmessageAutomaticEnable(object):
-    """ Logic for the automatic enable option
-    """
-    implements(IStatusMessageAutomaticEnable)
-
-    def __call__(self):
-        return False
 
 class StatusmessageShowOnLogin(object):
     """ Logic for the show on login form option
